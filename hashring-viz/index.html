@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一致性哈希环可视化</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <h1>一致性哈希环可视化</h1>
+  <div class="controls">
+    <div class="control-group">
+      <input id="node-input" type="text" placeholder="节点名（如 node-E）">
+      <button id="btn-add-node">添加节点</button>
+    </div>
+    <div class="control-group">
+      <input id="key-input" type="text" placeholder="键名（留空随机）">
+      <button id="btn-add-key">添加键</button>
+      <button id="btn-add-100-keys">+100 随机键</button>
+      <button id="btn-clear-keys">清空键</button>
+    </div>
+    <div class="control-group">
+      <label>虚拟节点数/节点：<input id="vnode-slider" type="range" min="1" max="500" value="100" step="1">
+      <b id="vnode-count-label">100</b></label>
+    </div>
+    <div class="control-group">
+      <button id="btn-reset" class="danger">重置全部</button>
+    </div>
+  </div>
+  <div class="meta">
+    <span>节点：<b id="node-count">0</b></span>
+    <span>键：<b id="key-count">0</b></span>
+    <span id="node-list" class="chips"></span>
+  </div>
+</header>
+
+<main>
+  <section class="rings">
+    <div class="ring-panel">
+      <h2>带虚拟节点（<span class="vnode-echo">vnode</span>）</h2>
+      <div class="canvas-wrap"><canvas id="ring-vnode"></canvas></div>
+      <div id="stats-vnode" class="stats"></div>
+      <h3>键迁移</h3>
+      <div id="migration-vnode" class="migration"></div>
+    </div>
+    <div class="ring-panel">
+      <h2>无虚拟节点（对比）</h2>
+      <div class="canvas-wrap"><canvas id="ring-plain"></canvas></div>
+      <div id="stats-plain" class="stats"></div>
+      <h3>键迁移</h3>
+      <div id="migration-plain" class="migration"></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h3>哈希冲突检测</h3>
+    <div id="collisions"></div>
+  </section>
+
+  <section class="panel">
+    <h3>键列表（点击高亮归属）</h3>
+    <div id="key-list" class="chips"></div>
+  </section>
+</main>
+
+<div id="tooltip"></div>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
